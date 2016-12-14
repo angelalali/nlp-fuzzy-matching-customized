@@ -129,7 +129,7 @@ def fuzzyWordMatch(tab1, tab1_name, tab2, tab2_name, tab1_des_col, tab2_des_col,
 
     out = pd.DataFrame(d)
     # out.to_stata(str(outFile + ".dta"))
-    out.to_csv(str(outFile + ".csv"))
+    out.to_excel(str(outFile + ".xlsx"))
     # print("******************************************")
     # print("*** Your analysis has been completed! *** ")
     # print("******************************************")

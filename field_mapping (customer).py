@@ -11,7 +11,7 @@ BASIC FILES/PATHS WHOSE USE IS REPEATED
 """
 
 # -- Replace below path with your correct directory structure
-baseDir = "/Users/yisilala/Documents/IBM/projects/schlumberger oil company/data input & output/real data"
+baseDir = "/Users/yisilala/Documents/IBM/projects/schlumberger oil company/data input & output/real data/"
 inDir = os.path.join(baseDir, 'input')
 outDir = os.path.join(baseDir, "output")
 
@@ -23,7 +23,7 @@ if not os.path.exists(outDir):
 read the files
 """
 ### read the legacy file data
-legacy_file = os.path.join(inDir, "Customer_Master_Oracle_MI_Source_Table_Metadata.xlsx")
+legacy_file = os.path.join(inDir, "CUSTOMER/Customer_Master_Oracle_MI_Source_Table_Metadata.xlsx")
 
 # read ALL the tabs in the legacy file; there are 5 in total but we don't care about the 5th one, which is phone tab
 col_names=["Name", "Datatype", "Length", "Mandatory", "Comments"]
@@ -57,10 +57,11 @@ sap_data = pd.DataFrame(columns=col_names)
 # print(sap_data)
 # sap_data = pd.DataFrame()
 
+# combing all the SAP files fields (rowbind)
 for i in range(0,len(sap_files)):
-    sap_file = os.path.join(inDir, 'SAP/' + sap_files[i]+'.xlsx')
+    sap_file = os.path.join(inDir, 'CUSTOMER SAP/' + sap_files[i]+'.xlsx')
     # print(sap_file)
-    temp_dt = pd.read_excel(sap_file, sheetname="Sheet1", names=col_names)
+    temp_dt = pd.read_excel(sap_file, sheetname=0, names=col_names)
     sap_data = sap_data.append(temp_dt)
 # print(sap_data.iloc[:15, :])
 # can use above line to check first 15 rows of your combined sap data
